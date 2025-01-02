@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Email</title>
+    <style>
+            /* General Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+    
+            /* Body Styling */
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: linear-gradient(46deg, rgb(246, 228, 207), transparent);
+            }
+    
+            /* Container Styling */
+            .container {
+                background-color: #fff;
+                padding: 2rem;
+                width: 100%;
+                max-width: 400px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+    
+            /* Title Styling */
+            .container h1 {
+                margin-bottom: 1.5rem;
+                text-align: center;
+                color: #333;
+            }
+    
+            /* Form Group Styling */
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+    
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                color: #555;
+            }
+    
+            .form-group input {
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+    
+            .form-group input:focus {
+                border-color: #3498db;
+                outline: none;
+                box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+            }
+    
+            /* Button Styling */
+            .btn {
+                display: block;
+                width: 100%;
+                padding: 0.8rem;
+                border: none;
+                background: green;
+                color: #fff;
+                font-size: 1rem;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+    
+            .btn:hover {
+                background: darkgreen;
+            }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Enter Verification Token</h1>`
+    <p style="text-align: center; margin-bottom: 1rem;">Email: {{ email }}</p>
+    <form action="/validate_mail?email={{ email }}" method="POST">
+     <div class="form-group">
+        <label for="token">Verification Token:</label>
+        <input type="text" name="token" id="token" required>
+    </div>
+        <button type="submit" class="btn">Verify</button>
+    </form>
+</div>
+</body>
+</html>

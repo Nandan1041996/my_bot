@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(46deg, rgb(246, 228, 207), transparent);
+            overflow: hidden;
+        }
+
+        /* Container Styling */
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .form-group input {
+            font-size: 1rem;
+            padding: 0.8rem;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .form-group input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .btn {
+            display: block;
+            padding: 0.8rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #fff;
+            border-radius: 5px;
+            background: green;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            background: darkgreen;
+        }
+
+        .small-text {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+
+        .small-text a {
+            color: green;
+            text-decoration: none;
+        }
+
+        .small-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Flash Message Styling */
+        .flash {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .flash.error {
+            color: #856404;
+            background-color: #fff3cd; /* Yellow background for error messages */
+            border: 1px solid #ffeeba;
+        }
+
+        .flash.success {
+            color: #155724;
+            background-color: #d4edda; /* Green background for success messages */
+            border: 1px solid #c3e6cb;
+        }
+
+        .flash.info {
+            color: #0c5460;
+            background-color: #d1ecf1; /* Blue background for info messages */
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Login Page</h3>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div>
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Login Form -->
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <p class="small-text">Don't have an account? <a href="/signup">SignUp</a></p>
+        <p class="small-text"><a href="/forgot_password">Forgot Password?</a></p>
+    </div>
+</body>
+</html> 
